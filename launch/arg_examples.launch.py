@@ -3,6 +3,8 @@
 import launch
 import launch_ros
 launch.frontend
+import os
+
 def launch_value_logger(context, *args, **kwargs):
     """
     This Python implementation also shows how to introspect the launch context in
@@ -11,8 +13,11 @@ def launch_value_logger(context, *args, **kwargs):
     """
     info_log_items = []
 
+    #we can get the absolute path to this launch file. I just want the filename, so I use os.path.sep
+    launch_fn = launch.substitutions.ThisLaunchFile().perform(context).split(os.path.sep)[-1]
+
     info_log_items.append(launch.actions.LogInfo(
-        msg="\n\n===== launch_examples.launch.py Launch Configuration Values =====")
+        msg=f"\n\n===== {launch_fn} Launch Configuration Values =====")
     )
     
     # The launch context has a dict called .launch_configurations that contains the names 
@@ -66,7 +71,7 @@ def generate_launch_description():
         launch.actions.DeclareLaunchArgument(
             "file_in_package_arg",
             default_value=launch.substitutions.PathJoinSubstitution(
-                [share] + "launch/launch_examples.launch.py".split("/") #I really hate this, there must be a way we can use the frontend to do this well in Python
+                [share] + "launch/arg_examples.launch.py".split("/") #I really hate this, there must be a way we can use the frontend to do this well in Python
             )
         )
     )

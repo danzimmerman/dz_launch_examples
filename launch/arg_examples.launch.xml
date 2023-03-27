@@ -18,12 +18,14 @@
         <choice value="choice_3"/>
     </arg>
 
+    <let name="this_file" value="arg_examples.launch.xml"/>
+
     <arg name="file_in_package_arg"
-         default="$(find-pkg-share dz_launch_examples)/launch/launch_examples.launch.xml"
+         default="$(find-pkg-share dz_launch_examples)/launch/$(var this_file)"
     />
     
     <let name="vars_output_string" value="&#10;&#10;
-===== launch_examples.launch.xml Launch Configuration Values =====&#10;
+===== $(var this_file) Launch Configuration Values =====&#10;
 simple_arg has a value of $(var simple_arg)&#10;
 arg_with_default has a value of $(var arg_with_default)&#10;
 arg_with_default_and_description has a value of $(var arg_with_default_and_description)&#10;

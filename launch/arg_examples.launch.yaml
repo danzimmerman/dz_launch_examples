@@ -17,15 +17,19 @@ launch:
     default: choice_1
     # In YAML, this currently requires info similar to the xml <choice value=""/> tags.
     choice: [value: choice_1, value: choice_2, value: choice_3]
-    
+
+- let:
+    name: this_file
+    value: arg_examples.launch.yaml
+
 - arg:
     name: file_in_package_arg
-    default: $(find-pkg-share dz_launch_examples)/launch/launch_examples.launch.yaml
+    default: $(find-pkg-share dz_launch_examples)/launch/$(var this_file)
 
 - let:
     name: vars_output_string
     value: "\n\n
-===== launch_examples.launch.yaml Launch Configuration Values =====\n
+===== $(var this_file) Launch Configuration Values =====\n
 simple_arg has a value of $(var simple_arg)\n
 arg_with_default has a value of $(var arg_with_default)\n
 arg_with_default_and_description has a value of $(var arg_with_default_and_description)\n
