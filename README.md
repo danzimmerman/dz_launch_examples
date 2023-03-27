@@ -22,4 +22,10 @@ The Python version also demonstrates:
 declared launch arguments
  - Use of `launch.actions.LogInfo` to log information from the log file.
 
+To see the declared arguments and their descriptions and valid choices, run:
+
+```
+ros2 launch dz_launch_examples arg_examples.launch.<extension> --show-args
+```
+
 
