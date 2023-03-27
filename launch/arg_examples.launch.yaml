@@ -10,7 +10,7 @@ launch:
 - arg:
     name: arg_with_default_and_description
     default: some_string_arg_value
-    description: this argument is used to configure ...
+    description: this argument is used to...
 
 - arg:
     name: arg_with_choices
