@@ -1,0 +1,39 @@
+# YAML launch XML argument declaration examples
+launch:
+- arg:
+    name: simple_arg
+
+- arg:
+    name: arg_with_default
+    default: "1234"
+
+- arg:
+    name: arg_with_default_and_description
+    default: some_string_arg_value
+    description: this argument is used to configure ...
+
+- arg:
+    name: arg_with_choices
+    default: choice_1
+    # In YAML, this currently requires info similar to the xml <choice value=""/> tags.
+    choice: [value: choice_1, value: choice_2, value: choice_3]
+    
+- arg:
+    name: file_in_package_arg
+    default: $(find-pkg-share dz_launch_examples)/launch/launch_examples.launch.yaml
+
+- let:
+    name: vars_output_string
+    value: "\n\n
+===== launch_examples.launch.yaml Launch Configuration Values =====\n
+simple_arg has a value of $(var simple_arg)\n
+arg_with_default has a value of $(var arg_with_default)\n
+arg_with_default_and_description has a value of $(var arg_with_default_and_description)\n
+arg_with_choices has a value of $(var arg_with_choices)]\n
+file_in_package_arg has a value of $(var file_in_package_arg)
+    "
+    
+- executable:
+    cmd: echo $(var vars_output_string)
+    output: screen
+    
