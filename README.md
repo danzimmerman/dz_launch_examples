@@ -2,7 +2,7 @@
 
 Some examples of ROS 2 launch files in Python, XML, and YAML.
 
-# Argument Declaration examples
+## Argument Declaration examples
 
 The launch files `arg_examples.launch.py`, `arg_examples.launch.xml`, and `arg_examples.launch.yaml` show off some features
 of argument declaration.
@@ -27,5 +27,6 @@ To see the declared arguments and their descriptions and valid choices, run:
 ```
 ros2 launch dz_launch_examples arg_examples.launch.<extension> --show-args
 ```
+
 
 
