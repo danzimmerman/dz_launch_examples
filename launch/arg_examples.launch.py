@@ -2,7 +2,6 @@
 
 import launch
 import launch_ros
-launch.frontend
 import os
 
 def launch_value_logger(context, *args, **kwargs):
