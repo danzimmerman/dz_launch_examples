@@ -7,7 +7,6 @@ def prepare_multiple_nodes(context, *args, **kwargs):
     
     """
     N_lc = launch.substitutions.LaunchConfiguration("num_node_pairs")
-    print(N_lc)
     N = int(N_lc.perform(context))
 
     nodes = []
