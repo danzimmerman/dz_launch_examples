@@ -24,5 +24,5 @@ def generate_launch_description():
 
     message = launch.actions.LogInfo(msg=f"I will launch {N} nodes")
 
-    return launch.LaunchDescription(declared_args + [message])
+    return launch.LaunchDescription(declared_args + [context, message])
 
