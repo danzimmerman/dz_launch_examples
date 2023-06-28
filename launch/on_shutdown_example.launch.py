@@ -1,4 +1,5 @@
 # from https://robotics.stackexchange.com/questions/24908/how-to-execute-a-script-at-shutdown-of-a-launch-process
+# looking into https://github.com/ros2/launch/issues/263 as well 
 
 import os
 from launch import LaunchDescription
@@ -12,7 +13,7 @@ def shutdown_func_with_echo_side_effect(event, context):
     os.system('echo [os.system()] Shutdown callback function can echo this way.')
     return [
         LogInfo(msg='Shutdown callback was called for reason "{}"'.format(event.reason)),
-        ExecuteProcess(cmd=['echo', 'However, this echo will fail.'])]
+        ExecuteProcess(cmd=['echo However, this echo will fail without shell=True.'], shell=True)]
     
 def generate_launch_description():
 
@@ -31,6 +32,7 @@ def generate_launch_description():
     
     ld = LaunchDescription([
         talker_node,
+        ExecuteProcess(cmd=['echo blah'], shell=True, output='both'),
         RegisterEventHandler(
             OnShutdown(on_shutdown=shutdown_func_with_echo_side_effect)
         )
