@@ -10,7 +10,6 @@ from launch.substitutions import LocalSubstitution
 
 def shutdown_func_with_echo_side_effect(event, context):
     os.system('echo [os.system()] Shutdown callback function can echo this way.')
-    #os.system('echo ')
     return [
         LogInfo(msg='Shutdown callback was called for reason "{}"'.format(event.reason)),
         ExecuteProcess(cmd=['echo', 'However, this echo will fail.'])]
