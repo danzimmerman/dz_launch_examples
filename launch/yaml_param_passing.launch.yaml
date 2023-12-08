@@ -1,0 +1,14 @@
+# see https://docs.ros.org/en/rolling/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html#rosparam 
+# and https://docs.ros.org/en/rolling/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html#load-parameter-file-on-node-startup
+# and https://docs.ros.org/en/rolling/How-To-Guides/Launch-file-different-formats.html?highlight=yaml%20launch
+# and note that copying XML examples where available tends to work for YAML
+
+launch:
+- node:
+    pkg: "turtlesim"
+    exec: "turtlesim_node"
+    name: "sim"
+    namespace: "turtlesim_dz"
+    param:
+      -
+        from: $(find-pkg-share dz_launch_examples)/config/turtlesim_custom_params.yaml
